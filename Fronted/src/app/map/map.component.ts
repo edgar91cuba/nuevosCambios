@@ -19,6 +19,7 @@ export class MapComponent implements OnInit {
   taxiIcon: any;
   marker: any;
   cargadores: any;
+  
 
   constructor() {}
 
@@ -26,41 +27,41 @@ export class MapComponent implements OnInit {
     this.initMap();
   }
 
-  async getCargadores(Latitude:any,longitud:any) :Promise<void> {
-    const resp = await axios.get(`http://localhost:8989/saludo?latitudeOrigen=${this.latitude}&longitudeOrigen=${this.longitud}&latitudeDestino=${Latitude}&longitudeDestino=${longitud}`);
+  async getCargadores(Latitude: any, longitud: any): Promise<void> {
+    const resp = await axios.get(
+      `http://localhost:8989/saludo?latitudeOrigen=${this.latitude}&longitudeOrigen=${this.longitud}&latitudeDestino=${Latitude}&longitudeDestino=${longitud}`
+    );
     this.cargadores = resp.data;
     const objetoCombinado = resp.data;
-          objetoCombinado.forEach((objeto: any) => {
-            let use = objeto.UsageCost;
+    objetoCombinado.forEach((objeto: any) => {
+      let use = objeto.UsageCost;
 
-            console.log(use);
+      console.log(use);
 
-            const iconCharger = L.icon({
-              iconUrl: '../../../assets/images/charging-station.png',
-              iconSize: [32, 32],
-              iconAnchor: [16, 16],
-              popupAnchor: [0, -16],
-            });
+      const iconCharger = L.icon({
+        iconUrl: '../../../assets/images/charging-station.png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+        popupAnchor: [0, -16],
+      });
 
-            if (use === '' || use === undefined || use === 'Desconocido') {
-              use = 'me comes los cojones';
-            } else use = objeto.UsageCost;
-            L.marker(
-              [objeto.AddressInfo.Latitude, objeto.AddressInfo.Longitude],
-              { icon: iconCharger }
-            ) // Usar las propiedades Latitude y Longitude del objeto
-              .addTo(this.map)
-              .bindPopup(
-                `<div class="infoCharger" style="color: red">
+      if (use === '' || use === undefined || use === 'Desconocido') {
+        use = 'me comes los cojones';
+      } else use = objeto.UsageCost;
+      L.marker([objeto.AddressInfo.Latitude, objeto.AddressInfo.Longitude], {
+        icon: iconCharger,
+      }) // Usar las propiedades Latitude y Longitude del objeto
+        .addTo(this.map)
+        .bindPopup(
+          `<div class="infoCharger" style="color: red">
                   <h3>Nombre :</h3> ${objeto.AddressInfo.Title}
                   <h3>Coste de uso:</h3> ${use}
                   <h3>Dirección:</h3> ${objeto.AddressInfo.AddressLine1}
                 </div>`
-              )
-              .openPopup();
-          });
+        )
+        .openPopup();
+    });
   }
-
 
   initMap(): void {
     const baseMapLayer = L.tileLayer(
@@ -93,8 +94,6 @@ export class MapComponent implements OnInit {
             popupAnchor: [0, -16],
           });
 
-         
-
           L.marker([latitude, longitude], { icon: customIcon })
             .addTo(this.map)
             .bindPopup('Usted se encuentra aquí')
@@ -106,7 +105,7 @@ export class MapComponent implements OnInit {
               this.map
             );
 
-            this.getCargadores(e.latlng.lat, e.latlng.lng));
+            this.getCargadores(e.latlng.lat, e.latlng.lng);
 
             L.Routing.control({
               waypoints: [
