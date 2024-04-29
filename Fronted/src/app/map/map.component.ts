@@ -19,7 +19,7 @@ export class MapComponent implements OnInit {
   taxiIcon: any;
   marker: any;
   cargadores: any;
-  
+
 
   constructor() {}
 
