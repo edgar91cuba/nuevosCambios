@@ -1,10 +1,9 @@
 nav {
-  padding: 1rem 3rem;
   border: 0;
   background-color: var(--white);
-  position: fixed;
-  z-index: 100;
-  width: 100%;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 nav ul {
@@ -29,8 +28,6 @@ nav ul .marca a h3 {
   color: var(--primary-green) !important;
 }
 
-
-
 .log,
 .reg {
   border: 2px solid var(--primary-green);
@@ -47,4 +44,114 @@ nav ul .marca a h3 {
 h3 {
   color: inherit;
   text-decoration: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.background-container {
+  background-image: url(../../assets/images/background.svg);
+  background-size: cover;
+  background-position: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  grid-gap: 30px;
+  max-width: 97%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 8px;
+}
+
+.grid-item {
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  width: calc(100% - 10px);
+}
+
+.grid-item:hover {
+  box-shadow: 0 0 20px rgba(104, 117, 233, 0.945);
+}
+
+.grid-item img {
+  width: 100%;
+  height: 500px;
+  border-radius: 10px 10px 0 0;
+}
+
+.grid-item .info1 {
+  padding: 50px;
+  background-color: #74b4f0;
+}
+
+.grid-item .info2 {
+  padding: 50px;
+  background-color: #77d18e;
+}
+
+.grid-item .info3 {
+  padding: 50px;
+  background-color: #f0b051;
+}
+
+.grid-item .info4 {
+  padding: 50px;
+  background-color: #c39cf7;
+}
+
+.grid-item h3 {
+  margin: 0;
+  font-size: 32px;
+  color: #FFFFFF;
+}
+
+.grid-item p {
+  margin: 5px 0 0;
+  font-size: 18px;
+  color: #0000008e;
+  margin-top: 30px;
+}
+
+.grid-item button {
+  margin-left: 30%;
+  background-color: #4496e2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 40px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.grid-item .info4 button{
+  background-color: #ac71f8;
+  margin-left: 25%;
+}
+
+.grid-item button:hover {
+  background-color: #45a049;
+}
+
+.clearfix {
+  clear: both;
 }

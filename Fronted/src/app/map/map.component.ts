@@ -20,7 +20,6 @@ export class MapComponent implements OnInit {
   marker: any;
   cargadores: any;
 
-
   constructor() {}
 
   ngOnInit(): void {

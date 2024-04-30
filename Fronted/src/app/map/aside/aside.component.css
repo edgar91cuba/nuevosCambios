@@ -4,6 +4,7 @@ main {
   border: 2px solid var(--white);
   color: var(--white);
   backdrop-filter: blur(15px);
+  margin-bottom: 200px;
 }
 hr {
   border: 1px solid var(--white);
